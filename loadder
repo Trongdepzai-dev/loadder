@@ -1,0 +1,58 @@
+print([[
+╔══════════════════════════════════════════════════════════════════════════╗
+║                                                                          ║
+║     ███╗   ███╗██╗  ██╗██╗  ██╗███████╗██████╗ ██╗   ██╗██╗  ██╗ ██╗    ║
+║     ████╗ ████║██║  ██║██║ ██╔╝╚════██║██╔══██╗╚██╗ ██╔╝██║  ██║███║    ║
+║     ██╔████╔██║███████║█████╔╝     ██╔╝██████╔╝ ╚████╔╝ ███████║╚██║    ║
+║     ██║╚██╔╝██║╚════██║██╔═██╗    ██╔╝ ██╔══██╗  ╚██╔╝  ╚════██║ ██║    ║
+║     ██║ ╚═╝ ██║     ██║██║  ██╗   ██║  ██████╔╝   ██║        ██║ ██║    ║
+║     ╚═╝     ╚═╝     ╚═╝╚═╝  ╚═╝   ╚═╝  ╚═════╝    ╚═╝        ╚═╝ ╚═╝    ║
+║                                                                          ║
+║                    ★ MAKE BY M4k3By41W1thPr0mpt ★                       ║
+╚══════════════════════════════════════════════════════════════════════════╝
+]])
+
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+local Window = OrionLib:MakeWindow({Name = "M4k3By41W1thPr0mpt Hub", HidePremium = false, SaveConfig = false, ConfigFolder = "M4k3Hub"})
+local Tab = Window:MakeTab({Name = "Main", Icon = "rbxassetid://4483345998", PremiumOnly = false})
+
+Tab:AddButton({
+	Name = "Load FlagWar Script",
+	Callback = function()
+      		loadstring(game:HttpGet("https://raw.githubusercontent.com/Trongdepzai-dev/FlagWar/refs/heads/main/loadderobf.txt",true))()
+  	end    
+})
+
+Tab:AddButton({
+	Name = "Load SmashVN Script",
+	Callback = function()
+      		loadstring(game:HttpGet("https://raw.githubusercontent.com/Trongdepzai-dev/loadder/refs/heads/main/smashvn.lua"))()
+  	end    
+})
+
+if game.PlaceId == 3214114884 then
+    OrionLib:MakeNotification({
+        Name = "M4k3By41W1thPr0mpt",
+        Content = "FlagWar Detected. Loading script...",
+        Image = "rbxassetid://4483345998",
+        Time = 5
+    })
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Trongdepzai-dev/FlagWar/refs/heads/main/loadderobf.txt",true))()
+elseif game.PlaceId == 92863835995509 then
+    OrionLib:MakeNotification({
+        Name = "M4k3By41W1thPr0mpt",
+        Content = "SmashVN Detected. Loading script...",
+        Image = "rbxassetid://4483345998",
+        Time = 5
+    })
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Trongdepzai-dev/loadder/refs/heads/main/smashvn.lua"))()
+else
+    OrionLib:MakeNotification({
+        Name = "M4k3By41W1thPr0mpt",
+        Content = "Unknown ID: " .. game.PlaceId .. ". Please select manually.",
+        Image = "rbxassetid://4483345998",
+        Time = 5
+    })
+end
+
+OrionLib:Init()
