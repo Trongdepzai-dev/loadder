@@ -1,0 +1,503 @@
+--[[
+    ╔══════════════════════════════════════════════════════════════════════════╗
+    ║                                                                          ║
+    ║     ███╗   ███╗██╗  ██╗██╗  ██╗███████╗██████╗ ██╗   ██╗██╗  ██╗ ██╗    ║
+    ║     ████╗ ████║██║  ██║██║ ██╔╝╚════██║██╔══██╗╚██╗ ██╔╝██║  ██║███║    ║
+    ║     ██╔████╔██║███████║█████╔╝     ██╔╝██████╔╝ ╚████╔╝ ███████║╚██║    ║
+    ║     ██║╚██╔╝██║╚════██║██╔═██╗    ██╔╝ ██╔══██╗  ╚██╔╝  ╚════██║ ██║    ║
+    ║     ██║ ╚═╝ ██║     ██║██║  ██╗   ██║  ██████╔╝   ██║        ██║ ██║    ║
+    ║     ╚═╝     ╚═╝     ╚═╝╚═╝  ╚═╝   ╚═╝  ╚═════╝    ╚═╝        ╚═╝ ╚═╝    ║
+    ║                                                                          ║
+    ║                    ★ MAKE BY M4k3By41W1thPr0mpt ★                       ║
+    ║                                                                          ║
+    ║                       ALL-IN-ONE SCRIPT v1.0                             ║
+    ║                                                                          ║
+    ╚══════════════════════════════════════════════════════════════════════════╝
+]]
+
+-- ═══════════════════════════════════════════════════════════════
+-- 📌 HỆ THỐNG NGÔN NGỮ / LANGUAGE SYSTEM
+-- ═══════════════════════════════════════════════════════════════
+
+local CurrentLanguage = "en" -- Mặc định tiếng Anh / Default English
+
+local Languages = {
+    en = {
+        -- Banner & Console
+        hub_starting = "★ MHK7RY41 Hub is starting...",
+        hub_loaded = "★ MHK7RY41 Hub loaded successfully! ★",
+        game_id = "★ Game ID: ",
+        game_name = "★ Game: ",
+        not_supported = "Not supported",
+        
+        -- Window
+        window_name = "⚡ MHK7RY41 Hub v1.0",
+        loading_title = "MHK7RY41 Hub",
+        loading_subtitle = "by M4k3By41W1thPr0mpt",
+        
+        -- Tabs
+        tab_home = "🏠 Home",
+        tab_scripts = "📜 Scripts",
+        tab_settings = "⚙️ Settings",
+        
+        -- Sections
+        section_hub = "═══════ ⚡ MHK7RY41 HUB ⚡ ═══════",
+        section_load = "═══════ 🎮 LOAD SCRIPT ═══════",
+        section_select = "═══════ 🎯 SELECT SCRIPT ═══════",
+        section_customize = "═══════ 🎨 CUSTOMIZE ═══════",
+        section_info = "═══════ 📊 INFORMATION ═══════",
+        section_language = "═══════ 🌐 LANGUAGE ═══════",
+        
+        -- Paragraphs
+        welcome_title = "👋 Welcome!",
+        welcome_content = "MHK7RY41 Hub - All-In-One Script\n★ Made by M4k3By41W1thPr0mpt ★\n\nCurrent Game ID: ",
+        
+        supported_title = "✅ Game Supported",
+        supported_content = "Game: %s\nStatus: Ready to load script!",
+        
+        not_supported_title = "❌ Game Not Supported",
+        not_supported_content = "Game ID %s is not supported yet.\nPlease contact for support!",
+        
+        credits_title = "📝 Credits",
+        credits_content = [[
+═══════════════════════════════
+★ MHK7RY41 Hub v1.0 ★
+Made by: M4k3By41W1thPr0mpt
+═══════════════════════════════
+
+Supported Games:
+• Flag War (3214114884)
+• Smash VN (75632629806903)
+
+═══════════════════════════════
+        ]],
+        
+        -- Buttons
+        btn_auto_load = "🚀 Auto Load Script",
+        btn_load_flagwar = "🏁 Load Flag War Script",
+        btn_load_smashvn = "💥 Load Smash VN Script",
+        btn_close = "🗑️ Close GUI",
+        
+        -- Toggle
+        toggle_auto = "🔄 Auto Load on join",
+        
+        -- Notifications
+        notify_loading = "⏳ Loading...",
+        notify_loading_content = "Loading script for ",
+        notify_success = "✅ Success!",
+        notify_success_content = " script has been loaded!",
+        notify_error = "❌ Error!",
+        notify_error_content = "Cannot load script: ",
+        notify_warning = "⚠️ Warning",
+        notify_warning_content = "This game is not supported!",
+        notify_hub_title = "⚡ MHK7RY41 Hub",
+        notify_hub_content = "Script loaded successfully!\nGame: ",
+        notify_auto_loading = "🔄 Auto Loading...",
+        notify_auto_content = "Auto loading ",
+        notify_please_wait = "Please wait...",
+        notify_lang_changed = "🌐 Language Changed",
+        notify_lang_content = "Language changed to English",
+        
+        -- Dropdown
+        dropdown_language = "🌐 Select Language",
+        lang_english = "English",
+        lang_vietnamese = "Tiếng Việt"
+    },
+    
+    vi = {
+        -- Banner & Console
+        hub_starting = "★ MHK7RY41 Hub đang khởi động...",
+        hub_loaded = "★ MHK7RY41 Hub đã load thành công! ★",
+        game_id = "★ Game ID: ",
+        game_name = "★ Game: ",
+        not_supported = "Không hỗ trợ",
+        
+        -- Window
+        window_name = "⚡ MHK7RY41 Hub v1.0",
+        loading_title = "MHK7RY41 Hub",
+        loading_subtitle = "bởi M4k3By41W1thPr0mpt",
+        
+        -- Tabs
+        tab_home = "🏠 Trang Chủ",
+        tab_scripts = "📜 Scripts",
+        tab_settings = "⚙️ Cài Đặt",
+        
+        -- Sections
+        section_hub = "═══════ ⚡ MHK7RY41 HUB ⚡ ═══════",
+        section_load = "═══════ 🎮 LOAD SCRIPT ═══════",
+        section_select = "═══════ 🎯 CHỌN SCRIPT ═══════",
+        section_customize = "═══════ 🎨 TÙY CHỈNH ═══════",
+        section_info = "═══════ 📊 THÔNG TIN ═══════",
+        section_language = "═══════ 🌐 NGÔN NGỮ ═══════",
+        
+        -- Paragraphs
+        welcome_title = "👋 Chào mừng!",
+        welcome_content = "MHK7RY41 Hub - All-In-One Script\n★ Made by M4k3By41W1thPr0mpt ★\n\nGame ID hiện tại: ",
+        
+        supported_title = "✅ Game được hỗ trợ",
+        supported_content = "Game: %s\nTrạng thái: Sẵn sàng load script!",
+        
+        not_supported_title = "❌ Game không được hỗ trợ",
+        not_supported_content = "Game ID %s chưa có script.\nVui lòng liên hệ để được hỗ trợ!",
+        
+        credits_title = "📝 Thông tin",
+        credits_content = [[
+═══════════════════════════════
+★ MHK7RY41 Hub v1.0 ★
+Tạo bởi: M4k3By41W1thPr0mpt
+═══════════════════════════════
+
+Games được hỗ trợ:
+• Flag War (3214114884)
+• Smash VN (75632629806903)
+
+═══════════════════════════════
+        ]],
+        
+        -- Buttons
+        btn_auto_load = "🚀 Tự động Load Script",
+        btn_load_flagwar = "🏁 Load Flag War Script",
+        btn_load_smashvn = "💥 Load Smash VN Script",
+        btn_close = "🗑️ Đóng GUI",
+        
+        -- Toggle
+        toggle_auto = "🔄 Tự động Load khi vào game",
+        
+        -- Notifications
+        notify_loading = "⏳ Đang tải...",
+        notify_loading_content = "Đang load script cho ",
+        notify_success = "✅ Thành công!",
+        notify_success_content = " script đã được load!",
+        notify_error = "❌ Lỗi!",
+        notify_error_content = "Không thể load script: ",
+        notify_warning = "⚠️ Cảnh báo",
+        notify_warning_content = "Game này không được hỗ trợ!",
+        notify_hub_title = "⚡ MHK7RY41 Hub",
+        notify_hub_content = "Script đã load thành công!\nGame: ",
+        notify_auto_loading = "🔄 Đang tự động tải...",
+        notify_auto_content = "Đang tự động load ",
+        notify_please_wait = "Vui lòng chờ...",
+        notify_lang_changed = "🌐 Đã đổi ngôn ngữ",
+        notify_lang_content = "Đã chuyển sang Tiếng Việt",
+        
+        -- Dropdown
+        dropdown_language = "🌐 Chọn Ngôn Ngữ",
+        lang_english = "English",
+        lang_vietnamese = "Tiếng Việt"
+    }
+}
+
+-- Hàm lấy text theo ngôn ngữ hiện tại
+local function L(key)
+    return Languages[CurrentLanguage][key] or Languages["en"][key] or key
+end
+
+-- ═══════════════════════════════════════════════════════════════
+-- 📌 IN BANNER RA CONSOLE
+-- ═══════════════════════════════════════════════════════════════
+
+local banner = [[
+
+    ╔══════════════════════════════════════════════════════════════════════════╗
+    ║                                                                          ║
+    ║     ███╗   ███╗██╗  ██╗██╗  ██╗███████╗██████╗ ██╗   ██╗██╗  ██╗ ██╗    ║
+    ║     ████╗ ████║██║  ██║██║ ██╔╝╚════██║██╔══██╗╚██╗ ██╔╝██║  ██║███║    ║
+    ║     ██╔████╔██║███████║█████╔╝     ██╔╝██████╔╝ ╚████╔╝ ███████║╚██║    ║
+    ║     ██║╚██╔╝██║╚════██║██╔═██╗    ██╔╝ ██╔══██╗  ╚██╔╝  ╚════██║ ██║    ║
+    ║     ██║ ╚═╝ ██║     ██║██║  ██╗   ██║  ██████╔╝   ██║        ██║ ██║    ║
+    ║     ╚═╝     ╚═╝     ╚═╝╚═╝  ╚═╝   ╚═╝  ╚═════╝    ╚═╝        ╚═╝ ╚═╝    ║
+    ║                                                                          ║
+    ║                    ★ MAKE BY M4k3By41W1thPr0mpt ★                       ║
+    ║                                                                          ║
+    ║                       ALL-IN-ONE SCRIPT v1.0                             ║
+    ║                                                                          ║
+    ╚══════════════════════════════════════════════════════════════════════════╝
+
+]]
+
+print(banner)
+warn(L("hub_starting"))
+
+-- ═══════════════════════════════════════════════════════════════
+-- 📌 CẤU HÌNH SCRIPT (ĐÃ SỬA GAME ID SMASH VN)
+-- ═══════════════════════════════════════════════════════════════
+
+local Config = {
+    Games = {
+        [3214114884] = {
+            Name = "Flag War",
+            Script = "https://raw.githubusercontent.com/Trongdepzai-dev/FlagWar/refs/heads/main/loadderobf.txt"
+        },
+        [75632629806903] = {
+            Name = "Smash VN", 
+            Script = "https://raw.githubusercontent.com/Trongdepzai-dev/loadder/refs/heads/main/loaddersmash.lua"
+        }
+    }
+}
+
+local PlaceId = game.PlaceId
+local GameInfo = Config.Games[PlaceId]
+
+-- ═══════════════════════════════════════════════════════════════
+-- 📌 LOAD THƯ VIỆN RAYFIELD UI
+-- ═══════════════════════════════════════════════════════════════
+
+local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
+
+-- ═══════════════════════════════════════════════════════════════
+-- 📌 HÀM TẠO GUI (Để reload khi đổi ngôn ngữ)
+-- ═══════════════════════════════════════════════════════════════
+
+local Window = nil
+
+local function CreateGUI()
+    -- Destroy window cũ nếu có
+    if Window then
+        pcall(function()
+            Rayfield:Destroy()
+        end)
+        wait(0.5)
+        -- Reload Rayfield
+        Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
+    end
+    
+    -- ═══════════════════════════════════════════════════════════════
+    -- 📌 TẠO CỬA SỔ CHÍNH
+    -- ═══════════════════════════════════════════════════════════════
+    
+    Window = Rayfield:CreateWindow({
+        Name = L("window_name"),
+        LoadingTitle = L("loading_title"),
+        LoadingSubtitle = L("loading_subtitle"),
+        ConfigurationSaving = {
+            Enabled = false,
+            FolderName = nil,
+            FileName = "MHK7RY41Hub"
+        },
+        Discord = {
+            Enabled = false,
+            Invite = "",
+            RememberJoins = true
+        },
+        KeySystem = false
+    })
+    
+    -- ═══════════════════════════════════════════════════════════════
+    -- 📌 TAB CHÍNH
+    -- ═══════════════════════════════════════════════════════════════
+    
+    local MainTab = Window:CreateTab(L("tab_home"), 4483362458)
+    
+    -- Banner Section
+    MainTab:CreateSection(L("section_hub"))
+    
+    MainTab:CreateParagraph({
+        Title = L("welcome_title"),
+        Content = L("welcome_content") .. tostring(PlaceId)
+    })
+    
+    -- Hiển thị game được hỗ trợ
+    if GameInfo then
+        MainTab:CreateParagraph({
+            Title = L("supported_title"),
+            Content = string.format(L("supported_content"), GameInfo.Name)
+        })
+    else
+        MainTab:CreateParagraph({
+            Title = L("not_supported_title"),
+            Content = string.format(L("not_supported_content"), tostring(PlaceId))
+        })
+    end
+    
+    MainTab:CreateSection(L("section_load"))
+    
+    -- ═══════════════════════════════════════════════════════════════
+    -- 📌 NÚT LOAD SCRIPT TỰ ĐỘNG
+    -- ═══════════════════════════════════════════════════════════════
+    
+    MainTab:CreateButton({
+        Name = L("btn_auto_load"),
+        Callback = function()
+            if GameInfo then
+                Rayfield:Notify({
+                    Title = L("notify_loading"),
+                    Content = L("notify_loading_content") .. GameInfo.Name,
+                    Duration = 3,
+                    Image = 4483362458
+                })
+                
+                wait(1)
+                
+                local success, err = pcall(function()
+                    loadstring(game:HttpGet(GameInfo.Script, true))()
+                end)
+                
+                if success then
+                    Rayfield:Notify({
+                        Title = L("notify_success"),
+                        Content = GameInfo.Name .. L("notify_success_content"),
+                        Duration = 5,
+                        Image = 4483362458
+                    })
+                else
+                    Rayfield:Notify({
+                        Title = L("notify_error"),
+                        Content = L("notify_error_content") .. tostring(err),
+                        Duration = 5,
+                        Image = 4483362458
+                    })
+                end
+            else
+                Rayfield:Notify({
+                    Title = L("notify_warning"),
+                    Content = L("notify_warning_content"),
+                    Duration = 3,
+                    Image = 4483362458
+                })
+            end
+        end
+    })
+    
+    -- ═══════════════════════════════════════════════════════════════
+    -- 📌 AUTO LOAD TOGGLE
+    -- ═══════════════════════════════════════════════════════════════
+    
+    MainTab:CreateToggle({
+        Name = L("toggle_auto"),
+        CurrentValue = false,
+        Flag = "AutoLoadToggle",
+        Callback = function(Value)
+            if Value and GameInfo then
+                wait(2)
+                Rayfield:Notify({
+                    Title = L("notify_auto_loading"),
+                    Content = L("notify_auto_content") .. GameInfo.Name,
+                    Duration = 3
+                })
+                pcall(function()
+                    loadstring(game:HttpGet(GameInfo.Script, true))()
+                end)
+            end
+        end
+    })
+    
+    -- ═══════════════════════════════════════════════════════════════
+    -- 📌 TAB SCRIPT THỦ CÔNG
+    -- ═══════════════════════════════════════════════════════════════
+    
+    local ScriptsTab = Window:CreateTab(L("tab_scripts"), 4483362458)
+    
+    ScriptsTab:CreateSection(L("section_select"))
+    
+    ScriptsTab:CreateButton({
+        Name = L("btn_load_flagwar"),
+        Callback = function()
+            Rayfield:Notify({
+                Title = L("notify_loading"),
+                Content = L("notify_please_wait"),
+                Duration = 3
+            })
+            pcall(function()
+                loadstring(game:HttpGet("https://raw.githubusercontent.com/Trongdepzai-dev/FlagWar/refs/heads/main/loadderobf.txt", true))()
+            end)
+        end
+    })
+    
+    ScriptsTab:CreateButton({
+        Name = L("btn_load_smashvn"),
+        Callback = function()
+            Rayfield:Notify({
+                Title = L("notify_loading"),
+                Content = L("notify_please_wait"),
+                Duration = 3
+            })
+            pcall(function()
+                loadstring(game:HttpGet("https://raw.githubusercontent.com/Trongdepzai-dev/loadder/refs/heads/main/loaddersmash.lua", true))()
+            end)
+        end
+    })
+    
+    -- ═══════════════════════════════════════════════════════════════
+    -- 📌 TAB CÀI ĐẶT
+    -- ═══════════════════════════════════════════════════════════════
+    
+    local SettingsTab = Window:CreateTab(L("tab_settings"), 4483362458)
+    
+    -- ═══════════════════════════════════════════════════════════════
+    -- 📌 PHẦN CHỌN NGÔN NGỮ
+    -- ═══════════════════════════════════════════════════════════════
+    
+    SettingsTab:CreateSection(L("section_language"))
+    
+    SettingsTab:CreateDropdown({
+        Name = L("dropdown_language"),
+        Options = {"English", "Tiếng Việt"},
+        CurrentOption = {CurrentLanguage == "en" and "English" or "Tiếng Việt"},
+        MultipleOptions = false,
+        Flag = "LanguageDropdown",
+        Callback = function(Options)
+            local selected = Options[1]
+            local newLang = nil
+            
+            if selected == "English" then
+                newLang = "en"
+            elseif selected == "Tiếng Việt" then
+                newLang = "vi"
+            end
+            
+            if newLang and newLang ~= CurrentLanguage then
+                CurrentLanguage = newLang
+                
+                Rayfield:Notify({
+                    Title = L("notify_lang_changed"),
+                    Content = L("notify_lang_content"),
+                    Duration = 3,
+                    Image = 4483362458
+                })
+                
+                -- Reload GUI với ngôn ngữ mới
+                wait(1)
+                CreateGUI()
+            end
+        end
+    })
+    
+    SettingsTab:CreateSection(L("section_customize"))
+    
+    SettingsTab:CreateButton({
+        Name = L("btn_close"),
+        Callback = function()
+            Rayfield:Destroy()
+        end
+    })
+    
+    SettingsTab:CreateSection(L("section_info"))
+    
+    SettingsTab:CreateParagraph({
+        Title = L("credits_title"),
+        Content = L("credits_content")
+    })
+    
+    -- ═══════════════════════════════════════════════════════════════
+    -- 📌 THÔNG BÁO KHỞI ĐỘNG THÀNH CÔNG
+    -- ═══════════════════════════════════════════════════════════════
+    
+    Rayfield:Notify({
+        Title = L("notify_hub_title"),
+        Content = L("notify_hub_content") .. (GameInfo and GameInfo.Name or L("not_supported")),
+        Duration = 5,
+        Image = 4483362458
+    })
+end
+
+-- ═══════════════════════════════════════════════════════════════
+-- 📌 KHỞI ĐỘNG GUI
+-- ═══════════════════════════════════════════════════════════════
+
+CreateGUI()
+
+print("═══════════════════════════════════════")
+print(L("hub_loaded"))
+print(L("game_id") .. tostring(PlaceId))
+print(L("game_name") .. (GameInfo and GameInfo.Name or L("not_supported")))
+print("═══════════════════════════════════════")
